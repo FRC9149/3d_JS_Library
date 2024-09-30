@@ -4,16 +4,16 @@ import { OBJLoader } from "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/j
 
 export function create3dObject(canvasObject, width = window.innerWidth, height = window.innerHeight, is_rotateable = false, pathToObj = "") {
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 10 );
-  camera.position.z = 2;
+  const camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
+  camera.position.z = 5;
 
   const renderer = new THREE.WebGLRenderer({ 
     canvas: canvasObject,
     alpha: false,
     antialias: true,
-    precision: "highp"
   });
   renderer.setSize( width, height );
+  document.body.appendChild(renderer.domElement);
 
   const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
   topLight.position.set(100, 100, 100); //top-left-ish
@@ -27,7 +27,7 @@ export function create3dObject(canvasObject, width = window.innerWidth, height =
   var controls;
   if(is_rotateable) {
     controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
+    // controls.enableDamping = true;
   }
 
   //Load the 3d model
@@ -51,7 +51,8 @@ export function create3dObject(canvasObject, width = window.innerWidth, height =
   //Render the scene
   function animate() {
     requestAnimationFrame(animate);
-    object.rotation.y += 0.005;
+    if(!is_rotateable) object.rotation.y += 0.005;
     renderer.render(scene, camera);
   }
+  animate();
 };

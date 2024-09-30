@@ -5,5 +5,5 @@ Renderer.create3dObject(
   200,
   200,
   true,
-  "/models/piplup.obj"
+  "/models/house.obj"
 )
