@@ -1,6 +1,6 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.js";
-import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/controls/OrbitControls.js"
-import { OBJLoader } from "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/loaders/OBJLoader.js"
+import * as THREE from "/node_modules/three";
+import { OrbitControls } from '/three/addons/controls/OrbitControls.js';
+import { OBJLoader } from "/three/examples/jsm/loaders/OBJLoader.js"
 
 function create3dObject(canvasObject, width = window.innerWidth, height = window.innerHeight, is_rotateable = false, pathToObj = "") {
   const scene = new THREE.Scene();
