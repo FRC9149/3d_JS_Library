@@ -2,37 +2,48 @@
 ## Either clone this repo, or go to (site is currently down) to use the library
 
 ## Setting up your html file
-In your html file, add this element before your script.
-`<script type="importmap">
+In your html file, add this element before your script.\
+```
+<script type="importmap">
   {
     "imports": {
       "three": "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.js",
       "addons": "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/"
     }
   }
-</script>`
+</script>
+```\
 This will allow for the library to acess it's dependencies.
 
-Make sure to give your script a type of module so that you can import te library.
-`<script type="module" src="your_script.js"></script>`
+Make sure to give your script a type of module so that you can import te library.\
+```
+<script type="module" src="your_script.js"></script>
+```
 
 ## Importing the library
 
 Inside your js file, you need to reference the library.
 
-If you're using jsdelivr, you need to import the full link.
-`import * as Renderer from "[INSERT LINK HERE]";`
+If you're using jsdelivr, you need to import the full link.\
+```
+import * as Renderer from "[INSERT LINK HERE]";
+```
 
-If you downloaded the repo then you can just import the file.
-`import * as Renderer from "/9149_Rendering.js";`
+If you downloaded the repo then you can just import the file.\
+```
+import * as Renderer from "/9149_Rendering.js";
+```
 
-You can also Write this with a direct import
-`import { create3dObject } from ...`
+You can also Write this with a direct import\
+```
+import { create3dObject } from ...
+```
 
 ## using the library
 
-Inside 9149_Rendering, there is 1 function.
-`function create3dObject(
+Inside 9149_Rendering, there is 1 function.\
+```
+function create3dObject(
   canvasObject, 
   pathToObj = "", 
   width = window.innerWidth, 
@@ -42,10 +53,12 @@ Inside 9149_Rendering, there is 1 function.
   spins = true, 
   shadows = true, 
   alpha = true
-)`
+)
+```
 
-there are 2 required parameters, canvasObject and pathToObj
-canvasObject defines the element that the 3d object should overlay
+
+there are 2 required parameters, canvasObject and pathToObj\
+canvasObject defines the element that the 3d object should overlay\
 pathToObj defines the path to your obj. (excluding the .obj) The only other requirement is that both your .obj and .mtl file have the same name.
 
 width defines the width of the canvas\
