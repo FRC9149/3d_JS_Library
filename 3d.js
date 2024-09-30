@@ -51,7 +51,6 @@ export function create3dObject(canvasObject, width = window.innerWidth, height =
   //Render the scene
   function animate() {
     requestAnimationFrame(animate);
-    if(!is_rotateable) object.rotation.y += 0.005;
     renderer.render(scene, camera);
   }
   animate();
