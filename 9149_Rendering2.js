@@ -1,46 +1,76 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.js";
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/controls/OrbitControls.js';
 import { OBJLoader } from "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/loaders/OBJLoader.js"
+import { MTLLoader } from 'https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/loaders/MTLLoader.js';
 
-export function create3dObject(canvasObject, width = window.innerWidth, height = window.innerHeight, is_rotateable = false, pathToObj = "") {
+export function create3dObject(
+  canvasObject, pathToObj = "", width = window.innerWidth, height = window.innerHeight, is_rotateable = false, cameraPosition = [0, 0, 0],
+  spins = true, shadows = true, alpha = true
+) {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
-  camera.position.z = 5;
+  camera.position.x = cameraPosition[0];
+  camera.position.y = cameraPosition[1];
+  camera.position.z = cameraPosition[2];
 
   const renderer = new THREE.WebGLRenderer({ 
     canvas: canvasObject,
-    alpha: false,
+    alpha: alpha,
     antialias: true,
   });
   renderer.setSize( width, height );
   document.body.appendChild(renderer.domElement);
 
+
+
+
   const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
+  const ambientLight = new THREE.AmbientLight(0x333333, 10);
   topLight.position.set(100, 100, 100); //top-left-ish
-  topLight.castShadow = true;
+  if(shadows) { 
+    topLight.castShadow = true;
+    ambientLight.castShadow = true;
+  }
   scene.add(topLight);
-  const ambientLight = new THREE.AmbientLight(0x333333, 1);
-  ambientLight.castShadow = true;
   scene.add(ambientLight);
+
 
   //make allow for you to move the model around or not
   var controls;
   if(is_rotateable) {
     controls = new OrbitControls(camera, renderer.domElement);
-    // controls.enableDamping = true;
+    controls.enableDamping = true;
   }
 
-  //Load the 3d model
+
+
+
+
+//Load the 3d model
   var object;
-  const loader = new OBJLoader();
-  loader.load(
-    pathToObj,
-    function(model) {
-      scene.add(model);
-    },
-    (xhr) => { console.log((xhr.loaded / xhr.total) * 100 + "% loaded"); },
-    (error) => { console.log(error); }
+  const matLoader = new MTLLoader();
+  matLoader.load(
+
+    `${pathToObj}.mtl`,
+    function(material) { 
+
+      material.preload();
+
+      const loader = new OBJLoader();
+      loader.setMaterials(material);
+      loader.load(
+        `${pathToObj}.obj`,
+        function(model) {
+          object = model;
+          scene.add(object);
+        }
+      );
+
+     }
+
   );
+
+
 
   window.addEventListener("resize", function () {
     camera.aspect = width / height;
@@ -51,6 +81,7 @@ export function create3dObject(canvasObject, width = window.innerWidth, height =
   //Render the scene
   function animate() {
     requestAnimationFrame(animate);
+    if(spins && object)   object.rotation.y += 0.005;
     renderer.render(scene, camera);
   }
   animate();

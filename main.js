@@ -1,9 +1,11 @@
-import * as Renderer from "/3d.js";
+import * as Renderer from "/9149_Rendering2.js";
 
 Renderer.create3dObject(
   document.getElementById("Jack"),
-  200,
-  200,
+  "/models/flower",
+  400,
+  500,
   true,
-  "/models/house.obj"
+  [0, 29, 25],
+  true
 )
