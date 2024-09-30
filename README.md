@@ -12,7 +12,7 @@ In your html file, add this element before your script.\
     }
   }
 </script>
-```\
+```
 This will allow for the library to acess it's dependencies.
 
 Make sure to give your script a type of module so that you can import te library.\
