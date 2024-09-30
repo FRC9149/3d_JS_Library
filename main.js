@@ -1,4 +1,4 @@
-import { test } from "https://cdn.jsdelivr.net/gh/FRC9149/3d_JS_Library@main/two.js"
+import { create3dObject } from "https://cdn.jsdelivr.net/gh/FRC9149/3d_JS_Library@main/three.js"
 
 //create3dObject(
 //  document.getElementById("Jack"),
