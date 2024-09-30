@@ -11,7 +11,7 @@
 //  document.body.appendChild( renderer.domElement );
 //
 //  const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
-//  topLight.position.set(100, 100, 100) //top-left-ish
+//  topLight.position.set(100, 100, 100); //top-left-ish
 //  topLight.castShadow = true;
 //  const ambientLight = new THREE.AmbientLight(0x333333, 1);
 //  ambientLight.castShadow = true;
