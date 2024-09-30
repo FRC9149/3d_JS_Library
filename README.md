@@ -2,7 +2,7 @@
 ## Either clone this repo, or go to (site is currently down) to use the library
 
 ## Setting up your html file
-In your html file, add this element before your script.\
+In your html file, add this element before your script.
 ```
 <script type="importmap">
   {
@@ -14,9 +14,8 @@ In your html file, add this element before your script.\
 </script>
 ```
 This will allow for the library to acess it's dependencies.
-
-Make sure to give your script a type of module so that you can import te library.\
 ```
+<!Make sure to give your script a type of module so that you can import the library.>
 <script type="module" src="your_script.js"></script>
 ```
 
@@ -24,24 +23,22 @@ Make sure to give your script a type of module so that you can import te library
 
 Inside your js file, you need to reference the library.
 
-If you're using jsdelivr, you need to import the full link.\
 ```
+// Using jsdelivr
 import * as Renderer from "[INSERT LINK HERE]";
-```
 
-If you downloaded the repo then you can just import the file.\
-```
+//using a download
 import * as Renderer from "/9149_Rendering.js";
 ```
 
-You can also Write this with a direct import\
+You can also Write this with a direct import
 ```
 import { create3dObject } from ...
 ```
 
 ## using the library
 
-Inside 9149_Rendering, there is 1 function.\
+Inside 9149_Rendering, there is 1 function.
 ```
 function create3dObject(
   canvasObject, 
