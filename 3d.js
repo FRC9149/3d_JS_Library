@@ -1,8 +1,8 @@
-import * as THREE from "/node_modules/three";
-import { OrbitControls } from '/three/addons/controls/OrbitControls.js';
-import { OBJLoader } from "/three/examples/jsm/loaders/OBJLoader.js"
+import * as THREE from "/threeJs/build/three.module.js";
+import { OrbitControls } from "/threeJS/examples/jsm/controls/OrbitControls.js";
+import { OBJLoader } from "/threeJS/examples/jsm/loaders/OBJLoader.js";
 
-function create3dObject(canvasObject, width = window.innerWidth, height = window.innerHeight, is_rotateable = false, pathToObj = "") {
+export default function create3dObject(canvasObject, width = window.innerWidth, height = window.innerHeight, is_rotateable = false, pathToObj = "") {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
 
@@ -33,7 +33,7 @@ function create3dObject(canvasObject, width = window.innerWidth, height = window
     function(model) {
       scene.add(mesh);
     },
-    (xhr) => { console.log((xhr.loaded / xhr.total) * 100 + '% loaded'); },
+    (xhr) => { console.log((xhr.loaded / xhr.total) * 100 + "% loaded"); },
     (error) => { console.log(error); }
   );
 
