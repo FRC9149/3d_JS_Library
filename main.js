@@ -1,10 +1,9 @@
-import { create3dObject } from "/3d.js";
+import * as Renderer from "/3d.js";
 
-create3dObject(
+Renderer.create3dObject(
   document.getElementById("Jack"),
   200,
   200,
   true,
-  "./models/piplup.obj"
-);
-
+  "/models/piplup.obj"
+)
