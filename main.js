@@ -7,3 +7,4 @@ create3dObject(
   true,
   "./models/piplup.obj"
 );
+

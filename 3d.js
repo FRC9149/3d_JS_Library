@@ -1,14 +1,17 @@
-import * as THREE from "/threeJs/build/three.module.js";
-import { OrbitControls } from "/threeJS/examples/jsm/controls/OrbitControls.js";
-import { OBJLoader } from "/threeJS/examples/jsm/loaders/OBJLoader.js";
+import * as THREE from "three";
+import { OrbitControls } from 'addons/controls/OrbitControls.js';
+import { OBJLoader } from "addons/loaders/OBJLoader.js"
 
-export default function create3dObject(canvasObject, width = window.innerWidth, height = window.innerHeight, is_rotateable = false, pathToObj = "") {
+export function create3dObject(canvasObject, width = window.innerWidth, height = window.innerHeight, is_rotateable = false, pathToObj = "") {
+  let a = document.createElement("p");
+  a.innerHTML = "ASDKJSDFUISDYUFDFYUSGF";
+  document.body.appendChild(a);
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
+  camera.position.z = -10;
 
   const renderer = new THREE.WebGLRenderer();
   renderer.setSize( width, height );
-  document.body.appendChild( renderer.domElement );
 
   const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
   topLight.position.set(100, 100, 100); //top-left-ish
@@ -47,7 +50,7 @@ export default function create3dObject(canvasObject, width = window.innerWidth, 
   function animate() {
     requestAnimationFrame(animate);
     object.rotation.y += 0.005;
-    renderer.render();
+    renderer.render(scene, camera);
   }
-  animate();
+  renderer.setAnimationLoop(animate);
 };
