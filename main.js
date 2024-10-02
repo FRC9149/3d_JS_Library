@@ -1,7 +1,7 @@
 import * as Renderer from "/9149_Rendering2.js";
 
 Renderer.create3dObject(
-  document.getElementById("Jack"),
+  document.getElementById("contained3d"),
   "/models/flower",
   400,
   500,
