@@ -1,5 +1,5 @@
 # A three.js library create by the frc team 9149
-## Either clone this repo, or go to `(https://cdn.jsdelivr.net/gh/FRC9149/3d_JS_Library@main/9149_Rendering2.js)` to use the library
+## Either clone this repo, or go to `[test](https://cdn.jsdelivr.net/gh/FRC9149/3d_JS_Library@main/9149_Rendering2.js)` to use the library
 
 ## Setting up your html file
 In your html file, add this element before your script.
