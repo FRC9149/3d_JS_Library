@@ -2,6 +2,7 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.m
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/controls/OrbitControls.js';
 import { OBJLoader } from "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/loaders/OBJLoader.js"
 import { MTLLoader } from 'https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/loaders/MTLLoader.js';
+import { STLLoader } from 'https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/loaders/STLLoader.js';
 
 export function create3dObject(
   canvasObject, pathToObj = "", width = window.innerWidth, height = window.innerHeight, is_rotateable = false, cameraPosition = [0, 0, 0],
@@ -49,27 +50,24 @@ export function create3dObject(
 //Load the 3d model
   var object;
   const matLoader = new MTLLoader();
+  //load material
   matLoader.load(
-
     `${pathToObj}.mtl`,
     function(material) { 
-
       material.preload();
 
-      const loader = new OBJLoader();
-      loader.setMaterials(material);
-      loader.load(
-        `${pathToObj}.obj`,
-        function(model) {
-          object = model;
+      //load mesh
+      const loader = new STLLoader();
+        loader.load(
+        '${pathToObj}.stl',
+        function (geometry) {
+          object = new THREE.Mesh(geometry, material);
           scene.add(object);
         }
       );
-
-     }
-
+      //END loading mesh
+    } //end lambda
   );
-
 
 
   window.addEventListener("resize", function () {
