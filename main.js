@@ -2,7 +2,7 @@ import * as Renderer from "/9149_Rendering2.js";
 
 Renderer.create3dObject(
   document.getElementById("contained3d"),
-  "/models/flower",
+  "/models/cali",
   400,
   500,
   true,
