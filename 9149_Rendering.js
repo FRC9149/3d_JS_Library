@@ -50,7 +50,7 @@ export function create3dObject(
   //load 3mf mesh
   var loader = new ThreeMFLoader();
   loader.load(
-    `${pathToObj}`,
+    `${pathToObj}.3mf`,
     function (geometry) {
       var result;
       geometry.traverse(function (child) {
