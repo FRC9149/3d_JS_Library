@@ -1,5 +1,5 @@
 # A three.js library create by the frc team 9149
-## Either clone this repo, or go to [This site](https://cdn.jsdelivr.net/gh/FRC9149/3d_JS_Library@1.0.0/9149_Rendering.js) to use the library
+## Either clone this repo, or go to [This site](https://cdn.jsdelivr.net/gh/FRC9149/3d_JS_Library@latest/9149_Rendering.js) to use the library
 
 ## Setting up your html file
 In your html file, add this element before your script.
@@ -25,7 +25,7 @@ Inside your js file, you need to reference the library.
 
 ```
 // Using jsdelivr
-import * as Renderer from "https://cdn.jsdelivr.net/gh/FRC9149/3d_JS_Library@1.0.0/9149_Rendering.js";
+import * as Renderer from "https://cdn.jsdelivr.net/gh/FRC9149/3d_JS_Library@latest/9149_Rendering.js";
 
 //using a download
 import * as Renderer from "/9149_Rendering.js";
